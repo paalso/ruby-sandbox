@@ -27,8 +27,8 @@ module ExchangeIt
     attr_reader :name, :surname
 
     def initialize(name, surname)
-      @name = name
-      @surname = surname
+      @name = name.to_s
+      @surname = surname.to_s
     end
   end
 end
