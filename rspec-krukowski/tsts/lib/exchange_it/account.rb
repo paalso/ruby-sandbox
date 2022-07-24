@@ -23,7 +23,7 @@ module ExchangeIt
       @balance -= amount
     end
 
-    def depost(amount)
+    def deposit(amount)
       raise ExchangeIt::IncorrectSum('Amount must be positive') unless amount.positive?
 
       @balance += amount
