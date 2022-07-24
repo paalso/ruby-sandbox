@@ -2,7 +2,7 @@
 
 RSpec.describe ExchangeIt::User do
   let(:user) { described_class.new 'John', 'Doe' }
-  let(:user_no_name) { described_class.new 'John', 'Doe' }
+  let(:user_no_name) { described_class.new nil, 'Doe' }
 
   it 'returns name' do
     expect(user.name).to be_an_instance_of(String)
@@ -17,8 +17,11 @@ RSpec.describe ExchangeIt::User do
     expect(user.surname).to eq('Doe')
   end
 
-  it 'has account' do
-    expect(user.name).to be_an_instance_of(ExchangeIt::Account)
+  # it 'has account' do - неудачно, ибо лучше:
+  # #account означает, что это метод образца класса,
+  # .account - метод класса
+  specify '#account' do
+    expect(user.account).to be_an_instance_of(ExchangeIt::Account)
   end
 
   it 'has zero balance by default' do

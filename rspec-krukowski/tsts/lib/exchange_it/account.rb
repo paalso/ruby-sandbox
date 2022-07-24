@@ -1,5 +1,6 @@
-module ExchangeIt
+# frozen_string_literal: true
 
+module ExchangeIt
   class Account
     include ExchangeIt::Utils::Uid
     attr_reader :uid, :balance
