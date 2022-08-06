@@ -17,14 +17,14 @@ module ExchangeIt
     end
 
     def withdraw(amount)
-      raise ExchangeIt::IncorrectSum('Amount must be positive') unless amount.positive?
-      raise ExchangeIt::NotEnoughFunds("Available: #{@balanse} but tried to withdraw #{amount}") if amount > @balance
+      raise(ExchangeIt::IncorrectSum, 'Amount must be positive!') unless amount.positive?
+      raise(ExchangeIt::NotEnoughFunds, "Available: #{@balance} but tried to withdraw #{amount}") if amount > @balance
 
       @balance -= amount
     end
 
     def deposit(amount)
-      raise ExchangeIt::IncorrectSum('Amount must be positive') unless amount.positive?
+      raise(ExchangeIt::IncorrectSum, 'Amount must be positive!') unless amount.positive?
 
       @balance += amount
     end
