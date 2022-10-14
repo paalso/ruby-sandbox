@@ -12,3 +12,5 @@
 
 [Тестирование возникновения ошибки](https://youtu.be/1miSIntbx2k?list=PLWlFXymvoaJ8BVBVvscCO5yG96gkmsZzK&t=1558)
 
+[Добавление тегов](https://youtu.be/sjumbrDILSI?list=PLWlFXymvoaJ8BVBVvscCO5yG96gkmsZzK&t=66)
+
