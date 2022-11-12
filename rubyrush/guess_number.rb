@@ -40,7 +40,9 @@ loop do
 end
 
 if game_failed
-  puts "Я загадал число #{secret_number}, а вы дебил! не смогли угадать за целых #{tries} попыток. Ха-ха!" if game_failed
+  if game_failed
+    puts "Я загадал число #{secret_number}, а вы дебил! не смогли угадать за целых #{tries} попыток. Ха-ха!"
+  end
 else
   puts "Ура, вы выиграли! За #{counter} попыток!"
 end

@@ -28,7 +28,7 @@ comps_score = 0
 gamers_score = 0
 
 choise_options = SHAPES.to_a.map { |e| e.join(' - ') }.join(', ')
-choise_options += ' ,Q - выход'
+choise_options += ', Q - выход'
 
 loop do
   gamers_choice = read("\nВведите вариант: #{choise_options}")
@@ -45,10 +45,11 @@ loop do
 
   winner = get_winner(comps_choice, gamers_choice)
 
-  if winner == 'comp'
+  case winner
+  when 'comp'
     puts 'Победил Компьютер'
     comps_score += 1
-  elsif winner == 'gamer'
+  when 'gamer'
     puts 'Вы победили'
     gamers_score += 1
   else
