@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
+require './pictures'
+
 VOCABULARY = 'nouns.txt'
 MIN_WORD_LENGTH = 6
 MAX_TRIES = 7
 GREETING_PAUSE = 2
 UPPER_MARGIN = 2
-LEFT_MARGIN = 3
 
 def cls
   system 'clear' or system 'cls'
@@ -17,7 +18,7 @@ def think_word
   words_number = words.size
   loop do
     word = words[rand(1..words_number)].chomp
-    return word if word.size >= MIN_WORD_LENGTH && ([' ', '-'] & word.split('')).empty?
+    return word.encode('UTF-8') if word.size >= MIN_WORD_LENGTH && ([' ', '-'] & word.split('')).empty?
   end
 end
 
@@ -44,7 +45,7 @@ def check_letter(next_letter, word, guessed_letters, error_letters)
   non_guessed_letters = word.split('').uniq - guessed_letters
   return :success if non_guessed_letters.include?(next_letter)
   if (guessed_letters | error_letters).include?(next_letter) |
-     !'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'.include?(next_letter)
+     !'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'.include?(next_letter.downcase)
     return nil
   end
 
@@ -92,120 +93,5 @@ def gamer_lose(errors_number)
 end
 
 def print_gallows(errors_number)
-  case errors_number
-  when 0
-    puts "
-          _______
-          |/
-          |
-          |
-          |
-          |
-          |
-          |
-          |
-        __|________
-        |         |
-        "
-  when 1
-    puts "
-          _______
-          |/
-          |     ( )
-          |
-          |
-          |
-          |
-          |
-          |
-        __|________
-        |         |
-        "
-  when 2
-    puts "
-          _______
-          |/
-          |     ( )
-          |      |
-          |
-          |
-          |
-          |
-          |
-        __|________
-        |         |
-        "
-  when 3
-    puts "
-          _______
-          |/
-          |     ( )
-          |      |_
-          |        \\
-          |
-          |
-          |
-          |
-        __|________
-        |         |
-        "
-  when 4
-    puts "
-          _______
-          |/
-          |     ( )
-          |     _|_
-          |    /   \\
-          |
-          |
-          |
-          |
-        __|________
-        |         |
-        "
-  when 5
-    puts "
-          _______
-          |/
-          |     ( )
-          |     _|_
-          |    / | \\
-          |      |
-          |
-          |
-          |
-        __|________
-        |         |
-        "
-
-  when 6
-    puts "
-          _______
-          |/
-          |     ( )
-          |     _|_
-          |    / | \\
-          |      |
-          |     / \\
-          |    /   \\
-          |
-        __|________
-        |         |
-        "
-  when 7
-    puts "
-          _______
-          |/     |
-          |     (_)
-          |     _|_
-          |    / | \\
-          |      |
-          |     / \\
-          |    /   \\
-          |
-        __|________
-        |         |
-        "
-
-  end
+  puts GALLOWS[errors_number]
 end
